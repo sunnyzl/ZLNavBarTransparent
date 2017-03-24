@@ -81,7 +81,10 @@ UINavigationBarDelegate
     UIColor *fromColor = fromVC.navBarTintColor;
     UIColor *toColor = toVC.navBarTintColor;
     UIColor *nowColor = [self averageColorFormClolor:fromColor toColor:toColor percent:percentComplete];
-    self.navigationBar.tintColor = nowColor;
+    
+    if (!fromVC.navigationBarHidden) {
+        self.navigationBar.tintColor = nowColor;
+    }
     [self zl_swizzling_updateInteractiveTransition:percentComplete];
 }
 
